@@ -1,0 +1,260 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>FrameWork</groupId>
+	<artifactId>FrameWork</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<featureCount>4</featureCount>
+	</properties>
+	<build>
+		<!-- Source directory configuration -->
+		<sourceDirectory>src/test/java</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.10.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.4.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.test.qa.main.TestRunner</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0-M7</version>
+				<configuration>
+					<parallel>methods</parallel>
+					<threadCount>${featureCount}</threadCount>
+					<perCoreThreadCount>false</perCoreThreadCount>
+					<!--<threadCountMethods>0</threadCountMethods>-->
+				</configuration>
+
+				<executions>
+					<execution>
+						<goals>
+							<goal>test</goal>
+						</goals>
+						<configuration>
+							<skipTests>false</skipTests>
+							<includes>
+								<include>com/test/qa/main/TestRunner.java</include>
+							</includes>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<!-- exclude log4j.properties 
+					<excludes>
+						<exclude>**/log4j2.xml</exclude>
+					</excludes>-->
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>com.test.qa.main.TestRunner</mainClass>
+							<classpathPrefix>dependency-jars/</classpathPrefix>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>net.masterthought</groupId>
+				<artifactId>maven-cucumber-reporting</artifactId>
+				<version>2.8.0</version>
+				<executions>
+					<execution>
+						<id>execution</id>
+						<phase>test</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<projectName>CucumberWebGui</projectName>
+							<outputDirectory>${project.build.directory}</outputDirectory>
+							<cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+							<skippedFails>true</skippedFails>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>4.7.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>7.10.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>7.10.1</version>
+			
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.18.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.18.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>3.23.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.30</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-compat</artifactId>
+			<version>3.8.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.13.4</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>5.2.3</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-scratchpad -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>5.2.3</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml-schemas -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>5.2.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>3.6.1</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.maven.shared</groupId>
+			<artifactId>maven-invoker</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+
+
+		<!-- TO add extent report-->
+		<!-- https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber6-adapter -->
+
+
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber7-adapter</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber7-jvm -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-cucumber7-jvm</artifactId>
+			<version>2.20.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-gherkin -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-gherkin</artifactId>
+			<version>7.10.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.cucumber/gherkin -->
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>26.0.2</version>
+		</dependency>
+
+	</dependencies>
+
+</project>
