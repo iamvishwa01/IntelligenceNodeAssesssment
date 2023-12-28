@@ -1,5 +1,4 @@
 package com.test.qa.appHooks;
-
 import java.net.MalformedURLException;
 //imports
 import java.util.Properties;
@@ -12,7 +11,7 @@ import com.test.qa.factory.DriverFactory;
 import com.test.qa.pages.HomePage;
 import com.test.qa.pages.LoginPage;
 import com.test.qa.util.ConfigReader;
-import com.test.qa.util.ElementUtil;
+import com.test.qa.util.UtilClass;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -29,10 +28,9 @@ public class Hooks {
 	public static ThreadLocal<Scenario> scenario = new ThreadLocal<>();
 	Logger log = LogManager.getLogger(Hooks.class);
 	String scenarioName = "";
-	String browserName = System.getProperty("browser", "firefox");
+	String browserName = System.getProperty("browser", "chrome");
 	String mode = System.getProperty("mode", "normal");
     String remoteURL = "http://192.168.1.208:4444/wd/hub";
-//	String remoteURL=prop.getProperty("remoteURL");
 	public Hooks() {
 		configReader = new ConfigReader();
 		prop = configReader.init_prop();
@@ -64,8 +62,9 @@ public class Hooks {
 			try {
 				if (driver != null) {
 					driverFactory.getDriver().get(prop.getProperty("URL_Master"));
-					ElementUtil elementUtil = new ElementUtil(driver);
+					UtilClass elementUtil = new UtilClass(driver);
 					elementUtil.addScreenShotToReport("URLLoaded");
+					Thread.sleep(10000);
 				}
 			} catch (Exception e) {
 				System.out.println("Please check the browser information provided in the command prompt.");
@@ -73,10 +72,10 @@ public class Hooks {
 			}
 	}
 
-	@After
+	//@After
 	public void quitBrowser(Scenario scenario) {
 		if (scenario.isFailed()) {
-			Hooks.getScenario().log("There are failures in the test");
+			Hooks.getScenario().log("There are failures in the test.");
 			driver.quit();
 		}else {
 			driver.quit();

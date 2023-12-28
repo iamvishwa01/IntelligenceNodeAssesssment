@@ -1,6 +1,7 @@
 package com.test.qa.util;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -15,11 +16,14 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.ss.util.NumberToTextConverter;
 
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
+
 /**
 * @Author -- Suvarna Prabhumatkari
 **/
 
-public class ExcelReader {
+public class ReadExcelData {
 	
 	public List<Map<String, String>> getData(String excelFilePath, String sheetName)
 			throws InvalidFormatException, IOException {
@@ -155,4 +159,24 @@ public class ExcelReader {
 		}
 		return columnMapdata;
 	}
+	
+	
+
+	    public static int getRowCount(String filePath) throws IOException, CsvValidationException {
+	        try (CSVReader csvReader = new CSVReader(new FileReader(filePath))) {
+	            int rowCount = 0;
+	            String[] nextLine;
+	            while ((nextLine = csvReader.readNext()) != null) {
+	                for (String field : nextLine) {
+	                    if (!field.isEmpty()) {
+	                        rowCount++;
+	                        break;
+	                    }
+	                }
+	            }
+	            return rowCount-1;
+	        }
+	    }
+	
+	
 }

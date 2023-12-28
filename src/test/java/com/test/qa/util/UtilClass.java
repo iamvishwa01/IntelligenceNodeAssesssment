@@ -9,10 +9,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -36,23 +34,33 @@ import io.cucumber.java.Scenario;
  * @Author -- Pranjal Mudhalwadkar
  **/
 
-public class ElementUtil {
+public class UtilClass {
 	private DriverFactory driverFactory = new DriverFactory();
 	public WebDriver driver = driverFactory.getDriver() ;
 	LogUtility logger = new LogUtility();	
-	Hooks  hooks = new Hooks();;
+	Hooks  hooks = new Hooks();
+	public static final long waitt = 30;
 
 	//ElementUtil Page Class Constructor
-	public ElementUtil(WebDriver driver) {
+	public UtilClass(WebDriver driver) {
 		this.driver= driver;	
 		PageFactory.initElements(driver, this);
 		
 	}//end 
-
+	public boolean isPageLoaded() {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	    return wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+	}
 	// Method to perform Click action on element
 	public void clickElement(WebElement element) {
+		waitForVisibility(element, waitt);
 		element.click();
 	}//end 
+	
+	public void waitForVisibility(WebElement element,long waitaa) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitaa));
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
 
 	// Method to enter text into input text field
 	public void enterText(WebElement element, String Text) {
@@ -224,7 +232,6 @@ public class ElementUtil {
 		driver.getWindowHandle();
 		String childWindow = driver.getWindowHandle();
 		Set<String> pops=driver.getWindowHandles();
-		boolean value=pops.remove(childWindow);
 		{
 			Iterator<String> it =pops.iterator();
 			while (it.hasNext()) {
@@ -290,7 +297,15 @@ public class ElementUtil {
 		SHORT_TIMEOUT();
 		jse.executeScript("arguments[0].scrollIntoView()", Element); 
 	}
+	public void javascriptExecutorScrollBy(int pixels) throws InterruptedException {
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
 
+        // Assuming SHORT_TIMEOUT() is a method you've defined elsewhere
+        SHORT_TIMEOUT();
+
+        // Using JavascriptExecutor to scroll by a certain amount (in pixels)
+        jse.executeScript("window.scrollBy(0, arguments[0])", pixels);
+    }
 	public void javascriptExecutorClickElement(WebElement Element) throws InterruptedException
 	{
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
@@ -328,11 +343,12 @@ public class ElementUtil {
 
 	public void implicitWait()
 	{
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
 	// Getting text from field
 	public String getText(WebElement element) {
+		waitForVisibility(element, waitt);
 		return element.getText();
 	}
 
@@ -370,7 +386,7 @@ public class ElementUtil {
 		return defaultItem;
 	}
 	//checking CheckBox Selection And Performing Action 
-	public void CheckBoxSelectAndDeslection(WebElement element, String checkbox) {
+	public void CheckBoxSelectAndDeslection(WebElement element, String checkbox) throws InterruptedException {
 		if(element.isSelected()==true && checkbox.equals("DeSelect"))
 		{
 			//System.out.println("in select");
@@ -417,7 +433,24 @@ public class ElementUtil {
 	public void ScrollToBottom() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
+		System.out.println("Scroll Worked...");
 	}
+	public void scrollToBottom() {
+        try {
+            ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            Thread.sleep(500);  // Optional: Add a small delay to allow time for the scrolling effect
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+	public void scrollToElement(WebElement element) {
+        try {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            Thread.sleep(500);  
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 	//Scroll Up to the Top of the webPage
 	public void ScrollToTop() {
@@ -440,7 +473,6 @@ public class ElementUtil {
 	/**
 	 * <b>Method to add screenshot in the JVM reports
 	 */
-	@SuppressWarnings("deprecation")
 	public void addScreenShotToReport(String screenShotName) {
 		final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 		Hooks.getScenario().attach(screenshot, "image/png",screenShotName);	
@@ -483,6 +515,12 @@ public class ElementUtil {
 	
 	public String getPageTitle() {
 	 return driver.getTitle();
+	}
+	public String getDate(String string) {
+        SimpleDateFormat sdf = new SimpleDateFormat(string);
+        Date currentDate = new Date();
+        String formattedDate = sdf.format(currentDate);
+        return formattedDate;
 	}
 
 }

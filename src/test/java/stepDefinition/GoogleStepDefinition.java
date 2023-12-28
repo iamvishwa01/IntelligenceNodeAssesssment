@@ -8,26 +8,23 @@ import org.openqa.selenium.WebDriver;
 
 import com.test.qa.appHooks.Hooks;
 import com.test.qa.factory.DriverFactory;
-import com.test.qa.pages.BingPage;
 import com.test.qa.pages.GooglePage;
-import com.test.qa.util.ConfigReader;
-import com.test.qa.util.ElementUtil;
-import com.test.qa.util.FileReadUtils;
+import com.test.qa.util.UtilClass;
+import com.test.qa.util.ExcelReadUtils;
 import com.test.qa.util.LogUtility;
 
 import io.cucumber.java.Scenario;
-import io.cucumber.java.en.*;
+import io.cucumber.java.en.When;
 
 public class GoogleStepDefinition {
 	
 	private DriverFactory driverFactory = new DriverFactory();
 	private WebDriver driver = driverFactory.getDriver();
-	ElementUtil elementUtil = new ElementUtil(driver);
-	private ConfigReader configReader;
+	UtilClass elementUtil = new UtilClass(driver);
 	public static Properties prop;
 	List<Map<String, String>> testData;
 	LogUtility logger = new LogUtility();
-	FileReadUtils fileReader = new FileReadUtils(driver);
+	ExcelReadUtils fileReader = new ExcelReadUtils(driver);
 	Hooks hooks = new Hooks();
 	public Scenario scenario;
 	GooglePage google = new GooglePage(driver);
