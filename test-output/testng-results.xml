@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="5" passed="4" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-28T23:38:17 IST" name="Default suite" finished-at="2023-12-28T23:40:04 IST" duration-ms="106504">
+  <suite started-at="2023-12-31T00:09:04 IST" name="Default suite" finished-at="2023-12-31T00:10:05 IST" duration-ms="61593">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.qa.main.TestRunner@1a5a4e19]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.qa.main.TestRunner@2d29b4ee]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2023-12-28T23:38:17 IST" name="Default test" finished-at="2023-12-28T23:40:04 IST" duration-ms="106504">
+    <test started-at="2023-12-31T00:09:04 IST" name="Default test" finished-at="2023-12-31T00:10:05 IST" duration-ms="61593">
       <class name="com.test.qa.main.TestRunner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.test.qa.main.TestRunner@1a5a4e19]" started-at="2023-12-28T23:38:17 IST" name="setUpClass" finished-at="2023-12-28T23:38:18 IST" duration-ms="357" status="PASS">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.test.qa.main.TestRunner@2d29b4ee]" started-at="2023-12-31T00:09:04 IST" name="setUpClass" finished-at="2023-12-31T00:09:04 IST" duration-ms="454" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@6a818392]]>
+                <![CDATA[org.testng.TestRunner@5edce7da]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.qa.main.TestRunner@1a5a4e19]" started-at="2023-12-28T23:38:18 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-12-28T23:40:03 IST" duration-ms="105099" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.qa.main.TestRunner@2d29b4ee]" started-at="2023-12-31T00:09:04 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-12-31T00:09:17 IST" duration-ms="12292" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing the Compare tab Available Items Count"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Assignment for all the cases"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.qa.main.TestRunner@2d29b4ee]" started-at="2023-12-31T00:09:17 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-12-31T00:09:27 IST" duration-ms="10604" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -37,7 +53,76 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.test.qa.main.TestRunner@1a5a4e19]" started-at="2023-12-28T23:40:03 IST" name="tearDownClass" finished-at="2023-12-28T23:40:04 IST" duration-ms="1019" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.qa.main.TestRunner@2d29b4ee]" started-at="2023-12-31T00:09:27 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-12-31T00:09:42 IST" duration-ms="14719" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing if the Download Page Data(H) csv file downloading and the count present on web and downloaded csv file item count is matching"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Assignment for all the cases"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.qa.main.TestRunner@2d29b4ee]" started-at="2023-12-31T00:09:42 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-12-31T00:09:55 IST" duration-ms="12731" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing the difference button is enabled and user able to click that display differences"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Assignment for all the cases"]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.test.qa.main.TestRunner@2d29b4ee]" started-at="2023-12-31T00:09:55 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2023-12-31T00:10:04 IST" duration-ms="9803" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Testing the drag and drop functionality for Relationship chart screen"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Assignment for all the cases"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.assertj.core.api.SoftAssertionError">
+            <message>
+              <![CDATA[
+The following assertion failed:
+1) expected:<"[Attribute should be added successfully. ]"> but was:<"[Something went wrong while adding attribute to 'x' or 'y' Axix boxes to generate the chart.]">
+]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.assertj.core.api.SoftAssertionError: 
+The following assertion failed:
+1) expected:<"[Attribute should be added successfully. ]"> but was:<"[Something went wrong while adding attribute to 'x' or 'y' Axix boxes to generate the chart.]">
+
+at org.assertj.core.error.AssertionErrorCreator.multipleSoftAssertionsError(AssertionErrorCreator.java:100)
+at org.assertj.core.api.AbstractSoftAssertions.assertAll(AbstractSoftAssertions.java:37)
+at org.assertj.core.api.AbstractSoftAssertions.assertAll(AbstractSoftAssertions.java:42)
+at com.test.qa.pages.IntelligencePage.generateRelationshipChart(IntelligencePage.java:335)
+at stepDefinition.IntelligenceNodeStepDefinition.user_drags_and_to_x_and_y_axis_then_click_on_apply_filter_buttton_and_then_clicks_on_any_generated_cell(IntelligenceNodeStepDefinition.java:86)
+at ✽.User drags "Website" and "Category" to X and Y axis then click on Apply Filter buttton and then clicks on any generated cell(file:///D:/Sujeet%20Data/Web%20Automation/AssementIntellengceNode/src/test/resources/Features/Case1_CheckAndCompare.feature:33)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.assertj.core.api.SoftAssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.test.qa.main.TestRunner@2d29b4ee]" started-at="2023-12-31T00:10:04 IST" name="tearDownClass" finished-at="2023-12-31T00:10:05 IST" duration-ms="951" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

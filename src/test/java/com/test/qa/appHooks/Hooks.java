@@ -64,7 +64,6 @@ public class Hooks {
 					driverFactory.getDriver().get(prop.getProperty("URL_Master"));
 					UtilClass elementUtil = new UtilClass(driver);
 					elementUtil.addScreenShotToReport("URLLoaded");
-					Thread.sleep(10000);
 				}
 			} catch (Exception e) {
 				System.out.println("Please check the browser information provided in the command prompt.");
@@ -72,7 +71,7 @@ public class Hooks {
 			}
 	}
 
-	//@After
+	@After
 	public void quitBrowser(Scenario scenario) {
 		if (scenario.isFailed()) {
 			Hooks.getScenario().log("There are failures in the test.");

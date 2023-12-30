@@ -10,8 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 import com.test.qa.appHooks.Hooks;
 import com.test.qa.factory.DriverFactory;
 import com.test.qa.util.UtilClass;
-import com.test.qa.util.ExcelReadUtils;
-import com.test.qa.util.LogUtility;
 
 import io.cucumber.java.Scenario;
 
@@ -21,8 +19,6 @@ public class LoginPage {
 	UtilClass elementUtil = new UtilClass(driver);
 	public static Properties prop;
 	List<Map<String, String>> testData;
-	LogUtility logger = new LogUtility();
-	ExcelReadUtils fileReader = new ExcelReadUtils(driver);
 	Hooks hooks = new Hooks();
 	public Scenario scenario;
 
