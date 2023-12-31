@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports  - Steps Overview</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>No Name (add projectName to cucumber-reporting.properties)</td>
+      <td>31 Dec 2023, 11:11</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Steps Statistics</h2>
+      <p>The following graph shows step statistics for this build. Below list is based on results.
+ step does not provide information about result then is not listed below.
+ Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
+  </div>
+</div>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table id="tablesorter" class="stats-table table-hover">
+
+        <thead>
+          <tr class="header">
+            <th>Implementation</th>
+            <th>Occurrences</th>
+            <th>Average duration</th>
+            <th>Max duration</th>
+            <th>Total durations</th>
+            <th>Ratio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td class="location">com.test.qa.appHooks.Hooks.getProperty(io.cucumber.java.Scenario)</td>
+              <td>5</td>
+              <td class="duration" data-value="33362640">0.033</td>
+              <td class="duration" data-value="33362640">0.034</td>
+              <td class="duration" data-value="166813200">0.166</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">com.test.qa.appHooks.Hooks.initBrowser(io.cucumber.java.Scenario)</td>
+              <td>5</td>
+              <td class="duration" data-value="12944738820">12.944</td>
+              <td class="duration" data-value="12944738820">18.077</td>
+              <td class="duration" data-value="64723694100">1:4.723</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">com.test.qa.appHooks.Hooks.quitBrowser(io.cucumber.java.Scenario)</td>
+              <td>5</td>
+              <td class="duration" data-value="94801780">0.094</td>
+              <td class="duration" data-value="94801780">0.112</td>
+              <td class="duration" data-value="474008900">0.474</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.IntelligenceNodeStepDefinition.captures_the_item_count_details()</td>
+              <td>1</td>
+              <td class="duration" data-value="1830979300">1.830</td>
+              <td class="duration" data-value="1830979300">1.830</td>
+              <td class="duration" data-value="1830979300">1.830</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.IntelligenceNodeStepDefinition.compare_the_total_itmes_count_and_downloaded_csv_items_count_and_upload()</td>
+              <td>1</td>
+              <td class="duration" data-value="3698279100">3.698</td>
+              <td class="duration" data-value="3698279100">3.698</td>
+              <td class="duration" data-value="3698279100">3.698</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.IntelligenceNodeStepDefinition.get_the_available_item_count()</td>
+              <td>1</td>
+              <td class="duration" data-value="5900828400">5.900</td>
+              <td class="duration" data-value="5900828400">5.900</td>
+              <td class="duration" data-value="5900828400">5.900</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.IntelligenceNodeStepDefinition.user_check_if_the_difference_button_is_enabled_and_user_able_to_click_that_display_differences()</td>
+              <td>1</td>
+              <td class="duration" data-value="6469923400">6.469</td>
+              <td class="duration" data-value="6469923400">6.469</td>
+              <td class="duration" data-value="6469923400">6.469</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.IntelligenceNodeStepDefinition.user_clicks_the_options_dropdown_and_selects_the_value_from_the_dropdown(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="4881187700">4.881</td>
+              <td class="duration" data-value="4881187700">4.881</td>
+              <td class="duration" data-value="4881187700">4.881</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.IntelligenceNodeStepDefinition.user_drags_and_to_x_and_y_axis_then_click_on_apply_filter_buttton_and_then_clicks_on_any_generated_cell(java.lang.String,java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="4436077100">4.436</td>
+              <td class="duration" data-value="4436077100">4.436</td>
+              <td class="duration" data-value="4436077100">4.436</td>
+              <td class="failed">0.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.IntelligenceNodeStepDefinition.user_loads_the_application_and_clicks_on_compare_tab_selects_the(java.lang.String)</td>
+              <td>4</td>
+              <td class="duration" data-value="1339858450">1.339</td>
+              <td class="duration" data-value="1339858450">1.894</td>
+              <td class="duration" data-value="5359433800">5.359</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.IntelligenceNodeStepDefinition.user_loads_the_application_and_clicks_on_relationship_link()</td>
+              <td>1</td>
+              <td class="duration" data-value="3359386800">3.359</td>
+              <td class="duration" data-value="3359386800">3.359</td>
+              <td class="duration" data-value="3359386800">3.359</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">stepDefinition.IntelligenceNodeStepDefinition.user_selects_the_option_from_the_status_dropdown(java.lang.String)</td>
+              <td>1</td>
+              <td class="duration" data-value="5596480300">5.596</td>
+              <td class="duration" data-value="5596480300">5.596</td>
+              <td class="duration" data-value="5596480300">5.596</td>
+              <td class="passed">100.00%</td>
+            </tr>
+        </tbody>
+
+        <tfoot class="total">
+          <tr>
+            <td>12</td>
+            <td>27</td>
+            <td class="duration">3.959</td>
+            <td class="duration">1:4.723</td>
+            <td class="duration">1:46.897</td>
+            <td>Totals</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>
