@@ -16,7 +16,7 @@ import org.testng.annotations.DataProvider;
 	)
 public class TestRunner extends AbstractTestNGCucumberTests {
 	@Override
-	@DataProvider(parallel = false) //set to false as Website is taking too much time to load/render if executed in parallel
+	@DataProvider(parallel = true) //can be set to false if site is taking too much time to load/render if executed in parallel
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}

@@ -1,12 +1,9 @@
 package com.test.qa.factory;
-
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import com.test.qa.util.ConfigReader;
 public class DriverFactory {
 	public Properties prop;

@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
@@ -15,18 +14,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import com.google.common.io.FileWriteMode;
 import com.opencsv.exceptions.CsvValidationException;
 import com.test.qa.appHooks.Hooks;
 import com.test.qa.factory.DriverFactory;
 import com.test.qa.util.ReadExcelData;
 import com.test.qa.util.UploadFileToDrive;
 import com.test.qa.util.UtilClass;
-
 import io.cucumber.java.Scenario;
 import io.restassured.response.Response;
-
 public class IntelligencePage {
 	private DriverFactory driverFactory = new DriverFactory();
 	WebDriver driver = driverFactory.getDriver();
@@ -246,7 +241,7 @@ public class IntelligencePage {
 						Hooks.getScenario().log("Response: "+response.getBody().asPrettyString());
 					}else {
 						Hooks.getScenario().log("File could not be uploaded to Google drive.\n"
-								+ "Access Token could be expire that could be possible reason. Please generate new access token.\n"
+								+ "Access Token could be expire that could be possible reason. Please generate new access token and pass it in UploadFileDrive class.\n"
 								+ "Response: "+response.getBody().asPrettyString());
 						softAssertions.assertThat("File '"+fileNameConvention+"' could not be uploaded to Google drive.").isEqualTo("File should be uploaded to Google drive.");
 					}
@@ -355,11 +350,5 @@ public class IntelligencePage {
 			Hooks.getScenario().log("Items table not loaded properly.");
 			utilClass.addScreenShotToReport("tableNotLoaded");
 		}
-		
-		
-		
-		
 	}
-
-	
 }

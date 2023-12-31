@@ -20,7 +20,7 @@ public class ReadExcelData {
 	                    }
 	                }
 	            }
-	            return rowCount-1;
+	            return rowCount-1; //removing header count
 	        }
 	    }
 	
