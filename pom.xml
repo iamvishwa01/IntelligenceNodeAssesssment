@@ -140,6 +140,12 @@
 			<version>5.4.0</version>
 			<scope>test</scope>
 		</dependency>
+<!-- https://mvnrepository.com/artifact/com.github.webdriverextensions/webdriverextensions -->
+<dependency>
+    <groupId>com.github.webdriverextensions</groupId>
+    <artifactId>webdriverextensions</artifactId>
+    <version>3.11.2</version>
+</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive -->
 	</dependencies>

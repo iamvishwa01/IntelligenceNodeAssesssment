@@ -10,6 +10,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -300,6 +301,9 @@ public class IntelligencePage {
 		utilClass.clickElement(relationShipChartLink);
 	}
 
+	
+	
+	
 	public void generateRelationshipChart(String string, String string2) throws InterruptedException {
 		utilClass.TIMEOUT();
 		int i = 1;
@@ -308,19 +312,48 @@ public class IntelligencePage {
 			if (value.equals(string)) {
 				WebElement match = driver.findElement(By.xpath(
 						"((//div[contains(@data-rbd-droppable-id,'filterList')])[1]/ul/li/in-drop-down)[" + i + "]"));
-				utilClass.dragAndDrop(match, xAxisBox);
-			} else if (value.equals(string2)) {
-				WebElement match = driver.findElement(By.xpath(
-						"((//div[contains(@data-rbd-droppable-id,'filterList')])[1]/ul/li/in-drop-down)[" + i + "]"));
-				utilClass.dragAndDrop(match, yAxisBox);
+				utilClass.dragAndDropByActionClass(match, xAxisBox);
+				break;
 			}
 			i++;
 		}
+		
+		i =1;
+		
+		try {
+			for (WebElement draggable : dragDropItems) {
+				String value = utilClass.getText(draggable);
+				if (value.equals(string2)) {
+					WebElement match = driver.findElement(By.xpath(
+							"((//div[contains(@data-rbd-droppable-id,'filterList')])[1]/ul/li/in-drop-down)[" + i + "]"));
+					utilClass.dragAndDropByActionClass(match, yAxisBox);
+					break;
+				}
+				i++;
+			}
+		} catch (StaleElementReferenceException e) { //handled StaleElementReferenceException as dom property was changing after drag and drop
+			i =1;
+			List<WebElement> allDraggable = driver.findElements(By.xpath("(//div[contains(@data-rbd-droppable-id,'filterList')])[1]/ul/li/in-drop-down/span/div/div/div/ng-include/div/span"));
+			for (WebElement draggable : allDraggable) {
+				String value = utilClass.getText(draggable);
+				if (value.equals(string2)) {
+					WebElement match = driver.findElement(By.xpath(
+							"((//div[contains(@data-rbd-droppable-id,'filterList')])[1]/ul/li/in-drop-down)[" + i + "]"));
+					utilClass.dragAndDropByActionClass(match, yAxisBox);
+					break;
+				}
+				i++;
+			}
+		}
+		utilClass.waitForVisibility(yAxisDragSuccess, 10);
 		try {
 			if(utilClass.isElementPresent(xAxisDragSuccess) && utilClass.isElementPresent(yAxisDragSuccess)) {
 				utilClass.clickElement(applyFilterBtn);
-				utilClass.waitForVisibility(chartMap, 20);
+				utilClass.waitForVisibility(anyCellFromChartMap, 20);
 				utilClass.actionClassClickElement(anyCellFromChartMap);
+				//Wait for few seconds after clicking on a cell
+				utilClass.CUSTOME_TIMEOUT(10000);
+				utilClass.addScreenShotToReport("RelationshipChartOK");
 			}	
 		}catch (NoSuchElementException e) {
 			softAssertions.assertThat("Something went wrong while adding attribute to 'x' or 'y' Axix boxes to generate the chart.").isEqualTo("Attribute should be added successfully. ");

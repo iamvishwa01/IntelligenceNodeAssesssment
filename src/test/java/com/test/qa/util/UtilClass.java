@@ -87,6 +87,11 @@ public class UtilClass {
 		Actions ac = new Actions(driver);
 		ac.dragAndDrop(sourceElement, targetElement).perform();
 	}
+	
+	public void dragAndDropByActionClass(WebElement source,WebElement target) {
+		Actions ac = new Actions(driver);
+		ac.clickAndHold(source).moveByOffset(0, 10).moveToElement(target).release().build().perform();
+	}
 
 	public void javascriptExecutorScrollElement(WebElement Element) throws InterruptedException
 	{
@@ -116,7 +121,10 @@ public class UtilClass {
 	public void TIMEOUT() throws InterruptedException {
 		Thread.sleep(3000);
 	}
-
+	public void CUSTOME_TIMEOUT(int timeout) throws InterruptedException {
+		Thread.sleep(timeout);
+	}
+	
 	public void LONG_TIMEOUT() throws InterruptedException {
 		Thread.sleep(20000);
 	}
