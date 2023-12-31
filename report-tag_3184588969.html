@@ -74,7 +74,7 @@ $(document).ready(function() {
   <tbody>
     <tr class="info">
       <td>No Name (add projectName to cucumber-reporting.properties)</td>
-      <td>31 Dec 2023, 11:11</td>
+      <td>01 Jan 2024, 00:29</td>
     </tr>
   </tbody>
 </table>
@@ -127,19 +127,19 @@ $(document).ready(function() {
         <tbody>
         <tr>
           <td class="tagname">@dragAndDropRelationship</td>
-          <td      class="passed"    >1</td>
-          <td      class="failed"    >1</td>
+          <td      class="passed"    >2</td>
+          <td >0</td>
           <td >0</td>
           <td >0</td>
           <td >0</td>
           <td class="total">2</td>
 
+          <td  class="passed"    >1</td>
           <td >0</td>
-          <td  class="failed"    >1</td>
           <td class="total">1</td>
 
-          <td class="duration" data-value="7795463900">7.795</td>
-          <td class="failed">Failed</td>
+          <td class="duration" data-value="27840970500">27.840</td>
+          <td class="passed">Passed</td>
         </tr>
         </tbody>
 
@@ -183,12 +183,12 @@ $(document).ready(function() {
 </div>
 
 
-  <span class="lead-duration duration">7.795</span>
+  <span class="lead-duration duration">27.840</span>
 
 
-  <span data-toggle="collapse" class=" collapsable-control" data-target="#element-1">
+  <span data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#element-1">
 
-<div class="brief failed">
+<div class="brief passed">
   <span class="keyword indention">Scenario</span>
   <span class="name">Testing the drag and drop functionality for Relationship chart screen</span>
 
@@ -199,7 +199,7 @@ $(document).ready(function() {
   </span>
   <div class="description indention"></div>
 
-  <div id="element-1" class="collapse collapsable-details  in ">
+  <div id="element-1" class="collapse collapsable-details ">
 
 
   <div class="inner-level hooks-element-before">
@@ -237,7 +237,7 @@ $(document).ready(function() {
             <span class="keyword indention">Before</span>
               <span class="location name">com.test.qa.appHooks.Hooks.initBrowser(io.cucumber.java.Scenario)</span>
 
-  <span class="lead-duration duration">8.825</span>
+  <span class="lead-duration duration">20.435</span>
 
           </div>
 
@@ -254,9 +254,9 @@ $(document).ready(function() {
 
 
 <div class="steps inner-level">
-  <div data-toggle="collapse" class=" collapsable-control" data-target="#steps-3">
+  <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#steps-3">
 
-<div class="brief failed">
+<div class="brief passed">
   <span class="keyword indention">Steps</span>
   <span class="name"></span>
 
@@ -266,7 +266,7 @@ $(document).ready(function() {
 
   </div>
 
-  <div id="steps-3" class="inner-level collapse collapsable-details  in ">
+  <div id="steps-3" class="inner-level collapse collapsable-details ">
       <div class="step">
 
 
@@ -274,7 +274,7 @@ $(document).ready(function() {
   <span class="keyword indention">Given</span>
   <span class="name">User loads the application and clicks on Relationship link</span>
 
-  <span class="lead-duration duration">3.359</span>
+  <span class="lead-duration duration">0.610</span>
 
 </div>
 
@@ -297,11 +297,11 @@ $(document).ready(function() {
       <div class="step">
 
 
-<div class="brief step-name-Then failed">
+<div class="brief step-name-Then passed">
   <span class="keyword indention">Then</span>
   <span class="name">User drags <span class="argument">&quot;Website&quot;</span> and <span class="argument">&quot;Category&quot;</span> to X and Y axis then click on Apply Filter buttton and then clicks on any generated cell</span>
 
-  <span class="lead-duration duration">4.436</span>
+  <span class="lead-duration duration">27.230</span>
 
 </div>
 
@@ -309,27 +309,6 @@ $(document).ready(function() {
 
 
 
-
-  <div class="inner-level">
-    <div class="message indention">
-      <div data-toggle="collapse" class=" collapsable-control" data-target="#msg-4">
-          <a>org.assertj.core.api.SoftAssertionError:</a>
-      </div>
-      <div id="msg-4" class="collapse collapsable-details  in ">
-        <pre>org.assertj.core.api.SoftAssertionError: 
-The following assertion failed:
-1) expected:&lt;&quot;[Attribute should be added successfully. ]&quot;&gt; but was:&lt;&quot;[Something went wrong while adding attribute to 'x' or 'y' Axix boxes to generate the chart.]&quot;&gt;
-
-	at org.assertj.core.error.AssertionErrorCreator.multipleSoftAssertionsError(AssertionErrorCreator.java:100)
-	at org.assertj.core.api.AbstractSoftAssertions.assertAll(AbstractSoftAssertions.java:37)
-	at org.assertj.core.api.AbstractSoftAssertions.assertAll(AbstractSoftAssertions.java:42)
-	at com.test.qa.pages.IntelligencePage.generateRelationshipChart(IntelligencePage.java:330)
-	at stepDefinition.IntelligenceNodeStepDefinition.user_drags_and_to_x_and_y_axis_then_click_on_apply_filter_buttton_and_then_clicks_on_any_generated_cell(IntelligenceNodeStepDefinition.java:86)
-	at &#10045;.User drags &quot;Website&quot; and &quot;Category&quot; to X and Y axis then click on Apply Filter buttton and then clicks on any generated cell(file:///D:/Sujeet%20Data/Web%20Automation/AssementIntellengceNode/src/test/resources/Features/Case1_CheckAndCompare.feature:33)
-</pre>
-      </div>
-    </div>
-  </div>
 
 
 
@@ -339,15 +318,15 @@ The following assertion failed:
 
   <div class="embeddings inner-level">
   <div class="embedding indention">
-    <div data-toggle="collapse" data-target="#embedding-5" class="collapsable-control">
-      <a>errorAddingAttributetoGenerateRelationShipChart</a>
-      <a href="embeddings/embedding_-1067557396.png" download target="_blank">
+    <div data-toggle="collapse" data-target="#embedding-4" class="collapsable-control">
+      <a>RelationshipChartOK</a>
+      <a href="embeddings/embedding_1764452921.png" download target="_blank">
         <span class="download-button glyphicon glyphicon-download-alt"></span>
       </a>
     </div>
-    <div id="embedding-5" class="collapse collapsable-details ">
+    <div id="embedding-4" class="collapse collapsable-details ">
       <div class="embedding-content">
-        <img src="embeddings/embedding_-1067557396.png">
+        <img src="embeddings/embedding_1764452921.png">
       </div>
     </div>
   </div>
@@ -364,7 +343,7 @@ The following assertion failed:
 
 
   <div class="inner-level hooks-element-after">
-    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#after-6">
+    <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#after-5">
 
 <div class="brief passed">
   <span class="keyword indention">Hooks</span>
@@ -376,13 +355,13 @@ The following assertion failed:
 
     </div>
 
-    <div id="after-6" class="inner-level collapse collapsable-details ">
+    <div id="after-5" class="inner-level collapse collapsable-details ">
         <div class="hook">
           <div class="brief passed">
             <span class="keyword indention">After</span>
               <span class="location name">com.test.qa.appHooks.Hooks.quitBrowser(io.cucumber.java.Scenario)</span>
 
-  <span class="lead-duration duration">0.112</span>
+  <span class="lead-duration duration">0.581</span>
 
           </div>
 
@@ -390,18 +369,6 @@ The following assertion failed:
 
 
 
-  <div class="outputs inner-level">
-      <div class="output indention">
-        <div data-toggle="collapse" class=" collapsed  collapsable-control" data-target="#output-7">
-          Output 1
-          <i class="chevron fa fa-fw"></i>
-        </div>
-        <div id="output-7" class="collapse collapsable-details " >
-          
-          <pre><p>There are failures in the test.</p></pre>
-        </div>
-      </div>
-  </div>
 
 
         </div>
